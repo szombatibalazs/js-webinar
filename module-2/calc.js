@@ -4,7 +4,14 @@ class Calc {
      * @param {number} v 
      */
     constructor(v) {
-        this.v = +v;
+        if (v > 0 && v < 10) {
+            this.v = +v;
+        } else if (v >= 10) {
+            this.v = +v;
+        } else {
+            throw new Error("Not correct value");
+        }
+        
     }
 
     /**

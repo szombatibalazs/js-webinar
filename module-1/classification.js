@@ -21,7 +21,22 @@ function grade(score) {
      * Also take into consideration the documentation of the function!
      */
     // PLACE YOUR CODE BETWEEN THIS...
-
+    /*
+    if (score < 60 && score >= 0) {
+        gradeOfStudent = 1;
+    } else if (score < 70 && score >= 60) {
+        gradeOfStudent = 2;
+    } else if (score < 80 && score >= 70) {
+        gradeOfStudent = 3;
+    } else if (score < 90 && score >= 80) {
+        gradeOfStudent = 4;
+    } else if (score >= 90 && score <= 100) {
+        gradeOfStudent = 5;
+    } else {
+        gradeOfStudent = 0;
+    }*/
+    gradeOfStudent = (0 <= score && score <= 100) ? (score >= 90) ? 5 : (score >= 80) ? 4 : (score >=70) ? 3 : (score >= 60) ? 2 : 1 : 0;
+    //gradeOfStudent = (0 <= score && score <= 100) ? Math.min(Math.max(Math.ceil((score-49)/10), 1), 5) : 0;
     // ...AND THIS COMMENT LINE!
     return gradeOfStudent;
 }

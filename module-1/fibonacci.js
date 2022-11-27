@@ -15,7 +15,26 @@ function fibonacci(n) {
      * Also, take into consideration the documentation of the function!
      */
     // PLACE YOUR CODE BETWEEN THIS...
-
+    if (n >= 0) {
+        if (n < 2) {
+            nThFibonacci = n;
+        } else {
+            /* Non-recursive solution (faster):
+            let f1 = 0;
+            let f2 = 1;
+            for (let i = 2; i <= n; i++) {
+                const sum = f1 + f2;
+                f1 = f2;
+                f2 = sum;
+            }
+            nThFibonacci = f2;
+            */
+            // My original, recursive solution (slower):
+            nThFibonacci = (fibonacci(n - 2))+(fibonacci(n - 1));
+        }
+    } else {
+        nThFibonacci = 0;
+    }
     // ...AND THIS COMMENT LINE!
     return nThFibonacci;
 }
