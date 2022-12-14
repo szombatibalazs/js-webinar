@@ -23,7 +23,8 @@ function euclidean(a, b) {
             } else {
                 b -= a;
             }
-           //gcd = (a > b) ? a -= b : b -= a;
+           /*gcd = (a > b) ? a -= b : b -= a;
+           */
         }
         gcd = a;
     } else {
