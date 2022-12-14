@@ -30,7 +30,7 @@ function fibonacci(n) {
             nThFibonacci = f2;
             */
             // My original, recursive solution (slower):
-            nThFibonacci = (fibonacci(n - 2))+(fibonacci(n - 1));
+            nThFibonacci = (fibonacci(n - 2)) + (fibonacci(n - 1));
         }
     } else {
         nThFibonacci = 0;
