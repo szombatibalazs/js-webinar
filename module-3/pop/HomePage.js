@@ -9,14 +9,20 @@ const Elements = require('./Elements');
 
 module.exports = class HomePage extends Layout {
     constructor() {
-        super('/');
+        super('Home', 'http://epam.com', { css: 'body' });
 
-        this.header = new Element('Header', by.css('header'));
-        this.header.addChildren(new Element("Logo", by.css('.header__logo')));
-        this.menuItems = new Elements("Menu Items", by.css('.top-navigation__item-link'));
-    }
+        this.header = new Element('Header', { css: 'header' });
+        this.header.addChildren(new Element('Logo', { css:'.header__logo' }));
+        this.menuItems = new Elements('Menu Items', { css:'.top-navigation__item-link' });
+        this.contactUs = new Elements('Contact Us', { css: '.top-navigation__sub-link' });
+        this.titleElement = new Element('Title', { css: 'h1' });
+        
+        this.body = new Element('Body', { css: 'body' });
+        this.body.addChildren(new Element('Slider Section', { css: 'slider-section' }));
+        this.body.addChildren(new Element('Title Slider', { css: 'title-slider' }));
+        this.body.addChildren(new Element('Button', { css: 'button'}));
 
-    get logo() {
-        return this.get('Logo');
+        this.footer = new Element('Footer', { css: 'footer' });
+        this.footer.addChildren(new Element('Our Brands', { css: '.footer__brands' }));
     }
 }

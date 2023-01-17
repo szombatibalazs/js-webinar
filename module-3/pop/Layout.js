@@ -14,4 +14,24 @@
  * 7. It has a method to load the page, i.e. Navigates to
  *    the URL of it (.load())
  */
-module.exports = class Layout {}
+
+//átnézni, hogy van-e hiba
+const Element = require("./Element");
+const Browser = require("../test/mock/Browser");
+
+class Layout extends Element{
+    constructor(name, url, locator) {
+        super(name, locator);
+        this.url = url;
+    }
+
+    setParent() {
+        throw new Error("Can't set parent!");
+    }
+
+    load() {
+        let browser = new Browser;
+        return browser.get(this.url);
+    }
+}
+module.exports = Layout;

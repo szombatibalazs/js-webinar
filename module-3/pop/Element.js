@@ -1,4 +1,8 @@
-/**
+const { prototype } = require("mocha");
+const { element } = require("../test/mock/ElementFinder");
+const ElementFinder = require("../test/mock/ElementFinder");
+
+/* *
  * Create an Element class that represents an element of
  * the application, and
  * 
@@ -18,4 +22,42 @@
  * Use Protractor API to retrieve element
  * @see {@link https://www.protractortest.org/#/api?view=ElementFinder}
  */
-module.exports = class Element { }
+module.exports = class Element {
+    constructor(name, locator) {
+        this.locator = locator;
+        this.name = name;
+
+        this.parent = null;
+        this.children = {};
+    }
+
+    setParent(parent) {
+        this.parent = parent;
+    }
+
+    addChildren(child) {
+        if (this.children.hasOwnProperty(child.name)) {
+            throw new Error(child.name + " is already added!");
+        }
+        this.children[child.name] = child;
+        child.setParent(this);
+    }
+
+    get(name) {     //kiegészíteni a nested és deeply nested childrenhez! HA nem {} a nested, akkor bejárni ciklussal és returnölni a nevét!
+        if (!name) {
+            return element(this.locator);
+        }
+
+        if (this.children.hasOwnProperty(name)) {   //DEEPLY: ameddig a childrenen belül van objektum
+            return this.children[name].get();
+        }
+
+        if(this.children !== {}) {
+            for (let key in this.children) {
+                return this.children[key].get(name);
+            }
+        }
+
+        throw new Error("No element called " + name + " have been found!");
+    }
+}
