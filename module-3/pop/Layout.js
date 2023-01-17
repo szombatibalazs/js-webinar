@@ -30,7 +30,7 @@ class Layout extends Element{
     }
 
     load() {
-        let browser = new Browser;
+        const browser = new Browser;
         return browser.get(this.url);
     }
 }

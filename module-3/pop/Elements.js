@@ -16,8 +16,10 @@
  * Use Protractor API to retrieve elements
  * @see {@link https://www.protractortest.org/#/api?view=ElementArrayFinder}
  */
-const ElementArrayFinder = require("../test/mock/ElementArrayFinder");
+//const ElementArrayFinder = require("../test/mock/ElementArrayFinder");
 const Element = require("./Element");
+const ElementFinder = require("../test/mock/ElementFinder");
+
 module.exports = class Elements extends Element {
     constructor(name, locator) {
         super(name, locator);
@@ -30,12 +32,12 @@ module.exports = class Elements extends Element {
     }
 
     all() {
-        let allFinder = new ElementArrayFinder;
-        return allFinder.all(this.locator);
+        //let allFinder = new ElementArrayFinder;
+        return ElementFinder.all(this.locator);
     }
 
     get(n) {
-        let getFinder = new ElementArrayFinder;
-        return getFinder.get(n);
+        //let getFinder = new ElementArrayFinder;
+        return this.all().get(n);
     }
 }

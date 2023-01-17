@@ -47,7 +47,7 @@ describe('HomePage Class', () => {
         });
 
         it('should have load by URL method', () => {
-            expect(page.load).not.to.be.undefined;
+            expect(page.load()).not.to.be.undefined;
             expect(page.load()).to.equal('http://epam.com');
         });
     });

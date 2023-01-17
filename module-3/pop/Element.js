@@ -1,5 +1,3 @@
-const { prototype } = require("mocha");
-const { element } = require("../test/mock/ElementFinder");
 const ElementFinder = require("../test/mock/ElementFinder");
 
 /* *
@@ -45,7 +43,7 @@ module.exports = class Element {
 
     get(name) {     //kiegészíteni a nested és deeply nested childrenhez! HA nem {} a nested, akkor bejárni ciklussal és returnölni a nevét!
         if (!name) {
-            return element(this.locator);
+            return ElementFinder.element(this.locator);
         }
 
         if (this.children.hasOwnProperty(name)) {   //DEEPLY: ameddig a childrenen belül van objektum
